@@ -12,5 +12,7 @@ app.use(express.json())
 
 //Routes
 app.use("/car",require('./routes/car'))
+app.use("/rent",require('./routes/rent'))
+app.use("/user",require('./routes/user'))
 
 module.exports = http
