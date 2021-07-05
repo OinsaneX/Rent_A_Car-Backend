@@ -1,6 +1,6 @@
 const {Schema , model} = require('mongoose')
 
-const userSchema = new Schema({
+const userLoggedSchema = new Schema({
   
     name:{
         type:String,
@@ -38,12 +38,17 @@ const userSchema = new Schema({
         type:String,
         required:true
     },
+    token:{
+        type:String,
+        required:true
+    },
     role:{
         type:String,
         default:"client"
     }
     },{timestamps:true},)
 
+    userLoggedSchema.index({createdAt: 1},{expireAfterSeconds: 6000})
 
 
-module.exports = model("user",userSchema)
+module.exports = model("userLogged",userLoggedSchema)
