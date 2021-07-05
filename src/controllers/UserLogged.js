@@ -24,6 +24,11 @@ userLoggedCtrl.getUserByToken= async(req,res) =>{
     .then((response) => res.json(response))
     .catch((err) =>res.json(err))
 }
+userLoggedCtrl.deleteUserLogged = async(req,res)=>{
+    const id = req.params.id
+    await userLoggedModel.findByIdAndDelete(id)
+    res.json("delete")
+}
 
 userLoggedCtrl.getUsersLogged = async(req,res) =>{
     const userLoggedList = await userLoggedModel.find()
