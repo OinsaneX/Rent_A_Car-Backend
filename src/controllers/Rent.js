@@ -15,8 +15,8 @@ rentCtrlr.createRent = async (req,res) =>{
     })
 
     await newRent.save()
-    .then((response) => res.json({message:response}))
-    .catch((err) =>res.json({message:err}))
+    .then((response) => res.json({response}))
+    .catch((err) =>res.json({err}))
 }
 
 rentCtrlr.updateRent = async (req,res) =>{
