@@ -5,7 +5,7 @@ emailCtrl.sendTestEmail = async (req,res) =>{
 nodemailer.createTestAccount((err, account) =>{
     const htmlEmail = `
     <h2>Email enviado automaticamente desde Rent_A_Car</h2>
-    <h3>Gracias por crearte una cuenta en nuestro sitio ... Active las notificaciones en su cuenta para recibir notificaciones de ofertas</h3>
+    <h3>Gracias por crearte ${req.body.username} una cuenta en nuestro sitio ... Active las notificaciones en su cuenta para recibir notificaciones de ofertas</h3>
     `;
     let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
