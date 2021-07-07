@@ -4,11 +4,9 @@ const rentSchema = new Schema({
   
   idCar:{
       type:String,
-      required:true
   },
   idUser:{
       type:String,
-      required:true
   },
   pickUp:{
       type:Date,
@@ -20,8 +18,22 @@ const rentSchema = new Schema({
   },
   price:{
       type:Number,
-      required:true
+  },
+  days:{
+      type:Number,
+
+  },
+  pickHour:{
+    type:Number,
+  },
+  dropHour:{
+    type:Number,
+  },
+  confirmed:{
+      type:Boolean,
+      default:false
   }
+
   
 },{timestamp:true})
 

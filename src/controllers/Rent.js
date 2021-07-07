@@ -8,15 +8,33 @@ rentCtrlr.getRents = async (req,res) =>{
 }
 
 rentCtrlr.createRent = async (req,res) =>{
-    const {idCar,idUser,pickUp,dropOff,price} = req.body
+    const {idUser,pickUp,dropOff, days,pickHour,dropHour} = req.body
 
     const newRent = new rentModel({
-        idCar,idUser,pickUp,dropOff,price
+        idUser,pickUp,dropOff,days,pickHour,dropHour
     })
 
     await newRent.save()
     .then((response) => res.json({message:response}))
     .catch((err) =>res.json({message:err}))
+}
+
+rentCtrlr.updateRent = async (req,res) =>{
+    const {id} = req.params.id
+    const {idCar,price,confirmed} = req.body
+
+    const oldRent = await rentModel.findById(id)
+    const newRent = {
+        ...oldRent,
+        idCar,
+        price,
+        confirmed
+    }
+        await rentModel.findByIdAndUpdate(id, newRent)
+        .then((response) => res.json({response}))
+        .catch((err) => res.json({err}))
+
+
 }
 
 rentCtrlr.deleteRent = async (req,res) =>{
