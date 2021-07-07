@@ -47,6 +47,7 @@ rentCtrlr.deleteRent = async (req,res) =>{
     const id = req.params.id
 
     await rentModel.findByIdAndDelete(id)
+    .then(() =>res.json("deleted"))
 
 }
 rentCtrlr.searchCarsavailable = async (req,res) =>{
