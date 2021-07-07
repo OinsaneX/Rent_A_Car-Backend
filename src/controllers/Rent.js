@@ -36,6 +36,12 @@ rentCtrlr.updateRent = async (req,res) =>{
 
 
 }
+rentCtrlr.getRent = async (req,res)=>{
+    const {id} = req.params
+    const rent = await rentModel.findById(id)
+    res.json(rent)
+}
+
 
 rentCtrlr.deleteRent = async (req,res) =>{
     const id = req.params.id
