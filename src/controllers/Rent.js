@@ -23,22 +23,29 @@ rentCtrlr.updateRent = async (req,res) =>{
     const {id} = req.params
     const {idCar,price,idUser} = req.body
 
-    console.log(id)
-    const oldRent = await rentModel.findById(id)
-    const newRent = new rentModel({
-        ...oldRent,
+    const newRent = {
         idUser,
         idCar,
         price
         
-    })
+    }
 
         await rentModel.findByIdAndUpdate(id, newRent)
-        .then((response) => res.json(response))
-        .catch((err) => res.json(err))
+        .then((response) => res.json("yep"))
+        .catch((err) => res.json("no"))
 
 
 }
+
+rentCtrlr.confirmRent = async(req,res) => {
+
+    const {id}= req.params
+
+    await rentModel.findByIdAndUpdate(id,{confirmed:true})
+    res.json("updated")
+}
+
+
 rentCtrlr.getRent = async (req,res)=>{
     const {id} = req.params
     const rent = await rentModel.findById(id)
