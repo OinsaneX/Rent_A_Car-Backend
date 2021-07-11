@@ -21,18 +21,19 @@ rentCtrlr.createRent = async (req,res) =>{
 
 rentCtrlr.updateRent = async (req,res) =>{
     const {id} = req.params.id
-    const {idCar,price,confirmed} = req.body
+    const {idCar,price,idUser} = req.body
 
     const oldRent = await rentModel.findById(id)
     const newRent = {
         ...oldRent,
+        idUser,
         idCar,
-        price,
-        confirmed
+        price
+        
     }
         await rentModel.findByIdAndUpdate(id, newRent)
-        .then((response) => res.json({response}))
-        .catch((err) => res.json({err}))
+        .then((response) => res.json(response))
+        .catch((err) => res.json(err))
 
 
 }
