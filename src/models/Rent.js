@@ -12,6 +12,10 @@ const rentSchema = new Schema({
       type:Date,
       required:true
   },
+  location:{
+    type:String,
+    required:true
+  },
   dropOff:{
       type:Date,
       required:true
