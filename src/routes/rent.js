@@ -1,11 +1,12 @@
 const {Router} = require('express')
 const router = Router()
-const {getRents,deleteRent,createRent,searchCarsavailable,getRent} = require('../controllers/Rent')
+const {getRents,deleteRent,createRent,searchCarsavailable,getRent,updateRent} = require('../controllers/Rent')
 
 router.route("/")
 .get(getRents)
 .post(createRent)
 router.route("/:id")
+.put(updateRent)
 .delete(deleteRent)
 .get(getRent)
 
