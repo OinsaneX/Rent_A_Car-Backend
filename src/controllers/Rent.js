@@ -8,8 +8,8 @@ rentCtrlr.getRents = async (req,res) =>{
 }
 
 rentCtrlr.createRent = async (req,res) =>{
-    const {idUser,pickUp,dropOff, days,pickHour,dropHour} = req.body
-
+    const {idUser,pickUp,dropOff,pickHour,dropHour} = req.body
+    const days = (new Date(dropOff).getTime() - new Date(pickUp).getTime()) / (1000 * 60 * 60 * 24)
     const newRent = new rentModel({
         idUser,pickUp,dropOff,days,pickHour,dropHour
     })
