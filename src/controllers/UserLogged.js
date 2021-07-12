@@ -8,9 +8,9 @@ const userLoggedModel = require("../models/UserLogged")
 const userLoggedCtrl = {}
 
 userLoggedCtrl.addUser = async(req,res)=>{
-    const {name,username,email,identity,phone,password,nacionality,country,address,role} = req.body
+    const {_id,name,username,email,identity,phone,password,nacionality,country,address,role} = req.body
     const token = TokenGenerator.generate()
-    const newUser = new userLoggedModel({name,username,email,identity,phone,password,nacionality,country,address,role,token})
+    const newUser = new userLoggedModel({_id,name,username,email,identity,phone,password,nacionality,country,address,role,token})
 
     await newUser.save()
     .then((response) => res.json({token}))
