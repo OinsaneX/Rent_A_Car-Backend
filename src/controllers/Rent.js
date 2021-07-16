@@ -69,7 +69,7 @@ rentCtrlr.searchCarsavailable = async (req,res) =>{
         var available = true
         rents.forEach(rent => {
             if(rent.idCar==car._id){
-                if(new Date(rent.pickUp)>=new Date(pickUp) && new Date(rent.dropOff)<=new Date(dropOff)){
+                if(new Date(rent.pickUp).getTime()>=new Date(pickUp).getTime() && new Date(rent.dropOff).getTime()<=new Date(dropOff).getTime()){
                     available = false
                 }     
             }
