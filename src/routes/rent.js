@@ -11,7 +11,7 @@ router.route("/:id")
 .get(getRent)
 
 router.route("/:id/confirm")
-.post(confirmRent)
+.get(confirmRent)
 
 router.route("/searchAvailable")
 .post(searchCarsavailable)
