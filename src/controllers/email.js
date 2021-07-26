@@ -50,7 +50,7 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
          <h3>Hora de recogida : ${rent.pickHour<13 ? `${rent.pickHour} AM` : `${rent.pickHour} PM`}</h3>
          <h3>Hora de entrega : ${rent.dropHour<13 ? `${rent.dropHour} AM` : `${rent.dropHour} PM`}</h3>
 
-        <h3>Gracias por usar nuestro servicio .Para confirmar su reserva haga click <a href="https://desolate-sea-14156.herokuapp.com/rent/confirm/${rent._id}">aqui</a></h3>
+        <h3>Gracias por usar nuestro servicio .Para confirmar su reserva haga click <a href="https://rent-a-car-zeta.vercel.app/rent/confirm/${rent._id}">aqui</a></h3>
         `;
         let transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
