@@ -21,12 +21,13 @@ rentCtrlr.createRent = async (req,res) =>{
 
 rentCtrlr.updateRent = async (req,res) =>{
     const {id} = req.params
-    const {idCar,price,idUser} = req.body
+    const {idCar,price,idUser,imageCar} = req.body
 
     const newRent = {
         idUser,
         idCar,
-        price
+        price,
+        imageCar
         
     }
 

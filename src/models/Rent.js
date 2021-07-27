@@ -5,6 +5,9 @@ const rentSchema = new Schema({
   idCar:{
       type:String,
   },
+  imageCar:{
+      type:String,
+  },
   idUser:{
       type:String,
   },
