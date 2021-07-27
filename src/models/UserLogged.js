@@ -48,7 +48,7 @@ const userLoggedSchema = new Schema({
     }
     },{timestamps:true},)
 
-    userLoggedSchema.index({createdAt: 1},{expireAfterSeconds: 12000})
+    userLoggedSchema.index({createdAt: 1},{expireAfterSeconds: 120000})
 
 
 module.exports = model("userLogged",userLoggedSchema)
