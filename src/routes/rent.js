@@ -1,6 +1,6 @@
 const {Router} = require('express')
 const router = Router()
-const {getRents,deleteRent,createRent,searchCarsavailable,getRent,updateRent,confirmRent} = require('../controllers/Rent')
+const {getRents,deleteRent,createRent,searchCarsavailable,getRent,updateRent,confirmRent,getRentofUser} = require('../controllers/Rent')
 
 router.route("/")
 .get(getRents)
@@ -12,6 +12,9 @@ router.route("/:id")
 
 router.route("/:id/confirm")
 .get(confirmRent)
+
+router.route("/user/:id")
+.get(getRentofUser)
 
 router.route("/searchAvailable")
 .post(searchCarsavailable)

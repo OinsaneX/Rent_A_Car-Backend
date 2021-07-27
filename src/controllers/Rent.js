@@ -91,5 +91,11 @@ rentCtrlr.searchCarsavailable = async (req,res) =>{
 
 }
 
+rentCtrlr.getRentofUser = async (req,res)=>{
+    const {id} = req.params
+    const rent = await rentModel.find({idUser:id})
+    res.json(rent)
+}
+
 
 module.exports = rentCtrlr
