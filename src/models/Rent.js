@@ -39,6 +39,13 @@ const rentSchema = new Schema({
   confirmed:{
       type:Boolean,
       default:false
+  },
+  cancelated:{
+      type:Boolean,
+      default:false
+  },active:{
+    type:Boolean,
+    default:true
   }
 
   

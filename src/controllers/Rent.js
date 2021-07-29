@@ -46,6 +46,14 @@ rentCtrlr.confirmRent = async(req,res) => {
     res.json("updated")
 }
 
+rentCtrlr.cancelRent = async(req,res) => {
+
+    const {id}= req.params
+
+    await rentModel.findByIdAndUpdate(id,{cancelated:true})
+    res.json("updated")
+}
+
 
 rentCtrlr.getRent = async (req,res)=>{
     const {id} = req.params
@@ -69,7 +77,7 @@ rentCtrlr.searchCarsavailable = async (req,res) =>{
     cars.forEach(car => {
         var available = true
         rents.forEach(rent => {
-            if(rent.idCar==car._id){
+            if(rent.idCar==car._id && !rent.cancelated && rent.active){
                 if(new Date(rent.pickUp).getTime()<=new Date(pickUp).getTime() && new Date(rent.dropOff).getTime()>=new Date(dropOff).getTime()){
                     available = false
                 }
