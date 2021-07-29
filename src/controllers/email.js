@@ -38,11 +38,13 @@ nodemailer.createTestAccount((err, account) =>{
 
 
 emailCtrl.sendEmailConfirm = async (req,res) =>{
-    const {email,asunto,mensaje,rent} = req.body
+    const {car,email,asunto,mensaje,rent} = req.body
     nodemailer.createTestAccount((err, account) =>{
         const htmlEmail = `
         <p>Email enviado automaticamente desde Rent_A_Car</p>
          <h2>Datos de la reserva :</h2>
+         <img src=${car.imageUrl} alt="" witdh=${200}/>
+         <h3>Marca : ${car.brand} ...Modelo : ${car.model}</h3>
          <h3>Fecha de recogida : ${new Date(rent.pickUp).getDate()}/${new Date(rent.pickUp).getMonth()+1}/${new Date(rent.pickUp).getFullYear()}</h3>
          <h3>Fecha de entrega : ${new Date(rent.dropOff).getDate()}/${new Date(rent.dropOff).getMonth()+1}/${new Date(rent.dropOff).getFullYear()}</h3>  
          <h3>Lugar de recogida : ${rent.location}</h3>
