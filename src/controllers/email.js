@@ -17,7 +17,7 @@ nodemailer.createTestAccount((err, account) =>{
     });
 
     let mailOptions = {
-        from: '0rentacar.cu@gmail.com',
+        from: 'Rent_A_Car.Cuba',
         to: req.body.email,
         replyTo: '0rentacar.cu@gmail.com',
         subject: req.body.asunto,
