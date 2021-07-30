@@ -43,9 +43,13 @@ const rentSchema = new Schema({
   cancelated:{
       type:Boolean,
       default:false
-  },active:{
+  },
+  active:{
     type:Boolean,
     default:true
+  },
+   user_name:{
+    type:String,
   }
 
   
