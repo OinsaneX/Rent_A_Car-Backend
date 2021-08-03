@@ -1,6 +1,6 @@
 const {Router} = require('express')
 const router = Router()
-const {getRents,deleteRent,createRent,searchCarsavailable,getRent,updateRent,confirmRent,getRentofUser,cancelRent} = require('../controllers/Rent')
+const {getRents,deleteRent,createRent,searchCarsavailable,getRent,updateRent,confirmRent,getRentofUser,cancelRent,deleteAll} = require('../controllers/Rent')
 
 router.route("/")
 .get(getRents)
@@ -9,6 +9,9 @@ router.route("/:id")
 .put(updateRent)
 .delete(deleteRent)
 .get(getRent)
+
+router.route("/deleteAll")
+.get(deleteAll)
 
 router.route("/:id/confirm")
 .get(confirmRent)

@@ -7,6 +7,11 @@ rentCtrlr.getRents = async (req,res) =>{
    res.json(rentList)
 }
 
+rentCtrlr.deleteAll = async (req,res) =>{
+    await rentModel.remove()
+    res.json("clear")
+}
+
 rentCtrlr.createRent = async (req,res) =>{
     const {idUser,pickUp,location,dropOff,pickHour,dropHour} = req.body
     const days = (new Date(dropOff).getTime() - new Date(pickUp).getTime()) / (1000 * 60 * 60 * 24)
