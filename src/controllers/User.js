@@ -3,7 +3,7 @@ const rentModel = require('../models/Rent')
 const userCtrl = {}
 
 userCtrl.getUsers = async(req,res)=>{
-    const userList = await userModel.find()
+    const userList = await userModel.find({deleted:false})
     res.json(userList)
 }
 
@@ -19,7 +19,7 @@ userCtrl.createUser = async(req,res)=>{
 
 userCtrl.deleteUser = async(req,res)=>{
     const id = req.params.id
-    await userModel.findByIdAndDelete(id)
+    await userModel.findByIdAndUpdate(id,{deleted:true})
     await rentModel.updateMany({idUser:id},{active:false})
     res.json("delete")
 }
