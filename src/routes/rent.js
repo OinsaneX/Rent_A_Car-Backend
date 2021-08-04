@@ -5,13 +5,12 @@ const {getRents,deleteRent,createRent,searchCarsavailable,getRent,updateRent,con
 router.route("/")
 .get(getRents)
 .post(createRent)
+.delete(deleteAll)
 router.route("/:id")
 .put(updateRent)
 .delete(deleteRent)
 .get(getRent)
 
-router.route("/deleteAll")
-.get(deleteAll)
 
 router.route("/:id/confirm")
 .get(confirmRent)

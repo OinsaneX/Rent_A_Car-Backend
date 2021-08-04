@@ -8,7 +8,7 @@ rentCtrlr.getRents = async (req,res) =>{
 }
 
 rentCtrlr.deleteAll = async (req,res) =>{
-    await rentModel.remove()
+    await rentModel.deleteMany()
     res.json("clear")
 }
 
