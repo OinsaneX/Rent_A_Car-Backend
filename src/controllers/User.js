@@ -3,6 +3,7 @@ const rentModel = require('../models/Rent')
 const userCtrl = {}
 
 userCtrl.getUsers = async(req,res)=>{
+    
     const userList = await userModel.find({deleted:false})
     res.json(userList)
 }
