@@ -41,7 +41,11 @@ const userSchema = new Schema({
     role:{
         type:String,
         default:"client"
-    }
+    },
+      deleted:{
+        type:Boolean,
+        default:false
+      }
     })
 
 

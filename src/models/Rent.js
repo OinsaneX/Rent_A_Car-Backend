@@ -51,10 +51,7 @@ const rentSchema = new Schema({
    user_name:{
     type:String,
   },
-  deleted:{
-    type:Boolean,
-    default:false
-  }
+
 
   
 },{timestamp:true})

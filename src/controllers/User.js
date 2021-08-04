@@ -4,7 +4,7 @@ const userCtrl = {}
 
 userCtrl.getUsers = async(req,res)=>{
     
-    const userList = await userModel.find({deleted:false})
+    const userList = await userModel.find()
     res.json(userList)
 }
 
@@ -31,6 +31,8 @@ userCtrl.getUserById = async(req,res)=>{
     const user = await userModel.findById(id)
     res.json(user)
 }
+
+
 
 userCtrl.getUserByNameAndPass = async(req,res)=>{
     const {username ,password} = req.body
