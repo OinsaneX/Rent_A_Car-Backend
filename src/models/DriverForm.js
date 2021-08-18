@@ -44,14 +44,12 @@ const driverFormSchema = new Schema({
         type:String,
       },
       licenseValidation:{
-        type:Date,
+        type:String,
       },
       licenseUrl:{
         type:String,
       },
-      licenseValidation:{
-        type:Date,
-      },
+      
       curriculum :{
           type:String
       }
