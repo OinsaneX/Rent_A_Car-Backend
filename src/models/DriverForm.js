@@ -53,7 +53,7 @@ const driverFormSchema = new Schema({
         type:Date,
       },
       curriculum :{
-          type:Text
+          type:String
       }
     })
 
