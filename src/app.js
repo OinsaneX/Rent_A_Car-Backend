@@ -16,6 +16,7 @@ app.use("/rent",require('./routes/rent'))
 app.use("/user",require('./routes/user'))
 app.use("/userlogged",require('./routes/userlogged'))
 app.use("/sendMail",require('./routes/email'))
+app.use("/driverForm",require('./routes/driverForm'))
 
 
 module.exports = http
