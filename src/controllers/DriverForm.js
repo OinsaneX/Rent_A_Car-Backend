@@ -7,6 +7,14 @@ driverFormCtrl.getDriverForms = async(req,res)=>{
     res.json(driverList)
 }
 
+driverFormCtrl.getDriverFormById = async(req,res)=>{
+    
+    const {id} = req.params
+    
+    const dataForm = await driverModelForm.findById(id)
+    res.json(dataForm)
+}
+
 driverFormCtrl.createDriverForm = async(req,res)=>{
     const {name,email,identity,phone,nacionality,country,address,role,experience_years,license,licenseValidation,curriculum,licenseUrl} = req.body
 

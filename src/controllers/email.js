@@ -83,4 +83,82 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
     })
     }
 
+    emailCtrl.sendEmailWorkConfirmed = async (req,res) =>{
+        const {name,email} = req.body
+        nodemailer.createTestAccount((err, account) =>{
+            const htmlEmail = `
+            <p>Email enviado automaticamente desde Rent_A_Car</p>
+             <h2>Estimado ${name} tenemos el placer de informarle que su petición de trabajo como chofer de la empresa ha sido aceptada</h2>
+             <h3>Accese a su cuenta en nuestro sitio web y aparecerá una nueva opcion en la barra de navegacion en la que podrá ver sus estadisticas y los dias que tiene pendiente un trabajo</h3>
+           
+            <h3>Gracias por usar nuestro servicio y Bienvenido </h3>
+            `;
+            let transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port:587,
+                auth: {
+                    user: '0rentacar.cu@gmail.com',
+                    pass: 'm!FQYWdCD6WYhg6'
+                }
+            });
+        
+            let mailOptions = {
+                from: '0rentacar.cu@gmail.com',
+                to: email,
+                replyTo: '0rentacar.cu@gmail.com',
+                subject: "Felicitaciones",
+                text: '',
+                html:htmlEmail
+            };
+        
+            transporter.sendMail(mailOptions,(err,info)=>{
+                if(err){
+                   res.json({err})
+                }
+                else{
+                    res.json("send")
+                }
+            })
+        })
+        }
+    emailCtrl.sendEmailWorkCanceled = async (req,res) =>{
+        const {name,email,exp} = req.body
+        nodemailer.createTestAccount((err, account) =>{
+            const htmlEmail = `
+            <p>Email enviado automaticamente desde Rent_A_Car</p>
+             <h2>Estimado ${name} lamentamos informarle que su petición de trabajo como chofer de la empresa ha sido rechazada</h2>
+             <h3>Razón :</h3>
+             <p>${exp}</p>
+           
+            <h3>Gracias por usar nuestro servicio y Bienvenido </h3>
+            `;
+            let transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port:587,
+                auth: {
+                    user: '0rentacar.cu@gmail.com',
+                    pass: 'm!FQYWdCD6WYhg6'
+                }
+            });
+        
+            let mailOptions = {
+                from: '0rentacar.cu@gmail.com',
+                to: email,
+                replyTo: '0rentacar.cu@gmail.com',
+                subject: "Solicitación rechazada",
+                text: '',
+                html:htmlEmail
+            };
+        
+            transporter.sendMail(mailOptions,(err,info)=>{
+                if(err){
+                   res.json({err})
+                }
+                else{
+                    res.json("send")
+                }
+            })
+        })
+        }
+
 module.exports = emailCtrl
