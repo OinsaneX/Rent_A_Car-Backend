@@ -1,6 +1,6 @@
 const {Router} = require("express")
 const router = Router()
-const {sendTestEmail,sendEmailConfirm,sendEmailWorkCanceled,sendEmailWorkConfirmed} = require("../controllers/email")
+const {sendTestEmail,sendEmailConfirm,sendEmailWorkCanceled,sendEmailWorkConfirmed,sendNotificationForm} = require("../controllers/email")
 
 router.route("/")
 .post(sendTestEmail)
@@ -10,4 +10,6 @@ router.route("/sendEmailWorkConfirmed")
 .post(sendEmailWorkConfirmed)
 router.route("/sendEmailWorkCanceled")
 .post(sendEmailWorkCanceled)
+router.route("/sendNotificationForm")
+.post(sendNotificationForm)
 module.exports = router

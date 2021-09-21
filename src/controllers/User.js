@@ -3,7 +3,6 @@ const rentModel = require('../models/Rent')
 const userCtrl = {}
 
 userCtrl.getUsers = async(req,res)=>{
-    
     const userList = await userModel.find({deleted:false})
     res.json(userList)
 }
@@ -40,5 +39,15 @@ userCtrl.getUserByNameAndPass = async(req,res)=>{
   const userSelected = await userModel.findOne({username,password})
     res.json(userSelected)
 }
+
+userCtrl.convertToDriver = async(req,res)=>{
+    const {id} = req.params
+
+    const {experience_years,license,licenseValidation} = req.body
+   await userModel.findByIdAndUpdate(id,{role:'driver',experience_years,license,licenseValidation})
+    res.json('changed to driver')
+}
+
+
 
 module.exports = userCtrl

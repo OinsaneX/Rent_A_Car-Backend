@@ -52,6 +52,13 @@ const driverFormSchema = new Schema({
       
       curriculum :{
           type:String
+      },
+      deleted:{
+        type:Boolean,
+        default:false,
+      },idUser:{
+        type:String,
+        required:true,
       }
     },
     {timestamps:true})

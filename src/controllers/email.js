@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer')
+const userModel = require('../models/User')
 emailCtrl = {}
 
 emailCtrl.sendTestEmail = async (req,res) =>{
@@ -130,7 +131,6 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
              <h3>Razón :</h3>
              <p>${exp}</p>
            
-            <h3>Gracias por usar nuestro servicio y Bienvenido </h3>
             `;
             let transporter = nodemailer.createTransport({
                 host: 'smtp.gmail.com',
@@ -146,6 +146,50 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
                 to: email,
                 replyTo: '0rentacar.cu@gmail.com',
                 subject: "Solicitación rechazada",
+                text: '',
+                html:htmlEmail
+            };
+        
+            transporter.sendMail(mailOptions,(err,info)=>{
+                if(err){
+                   res.json({err})
+                }
+                else{
+                    res.json("send")
+                }
+            })
+        })
+        }
+    emailCtrl.sendNotificationForm = async (req,res) =>{
+       
+        const usersComercial = await userModel.find({role:"comercial"})
+        var emailList = []
+        usersComercial.forEach(user => {
+            user.role == "comercial" && emailList.push(user.email)
+        });
+
+        nodemailer.createTestAccount((err, account) =>{
+            const htmlEmail = `
+            <p>Email enviado automaticamente desde Rent_A_Car</p>
+             <h2>Se ha registrado una nueva petición de chofer en el sistema. Accese con su cuenta comercial y responda lo antes posible </h2>
+            
+           
+           
+            `;
+            let transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port:587,
+                auth: {
+                    user: '0rentacar.cu@gmail.com',
+                    pass: 'm!FQYWdCD6WYhg6'
+                }
+            });
+        
+            let mailOptions = {
+                from: '0rentacar.cu@gmail.com',
+                to: emailList,
+                replyTo: '0rentacar.cu@gmail.com',
+                subject: "Nueva petición registrada",
                 text: '',
                 html:htmlEmail
             };

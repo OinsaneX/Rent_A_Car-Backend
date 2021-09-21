@@ -45,7 +45,16 @@ const userSchema = new Schema({
       deleted:{
         type:Boolean,
         default:false
-      }
+      },
+      experience_years:{
+        type:Number,
+      },
+      license:{
+        type:String,
+      },
+      licenseValidation:{
+        type:String,
+      },
     })
 
 

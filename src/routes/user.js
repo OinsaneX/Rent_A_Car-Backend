@@ -1,6 +1,6 @@
 const {Router} = require('express')
 const router = Router()
-const {getUsers,getUserById,getUserByNameAndPass,deleteUser,createUser} = require('../controllers/User')
+const {getUsers,getUserById,getUserByNameAndPass,deleteUser,createUser,convertToDriver} = require('../controllers/User')
 
 router.route("/")
 .get(getUsers)
@@ -12,5 +12,9 @@ router.route("/:id")
 
 router.route("/login")
 .post(getUserByNameAndPass)
+
+router.route("/convertToDriver/:id")
+.post(convertToDriver)
+
 
 module.exports = router
