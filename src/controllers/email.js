@@ -3,7 +3,7 @@ const userModel = require('../models/User')
 emailCtrl = {}
 
 emailCtrl.sendTestEmail = async (req,res) =>{
-nodemailer.createTestAccount((err, account) =>{
+nodemailer.createTestAccount(async(err, account) =>{
     const htmlEmail = `
     <h2>Email enviado automaticamente desde Rent_A_Car</h2>
     <h3>Gracias ${req.body.username} por crearte  una cuenta en nuestro sitio ... Active las notificaciones en su cuenta para recibir notificaciones de ofertas</h3>
@@ -40,7 +40,7 @@ nodemailer.createTestAccount((err, account) =>{
 
 emailCtrl.sendEmailConfirm = async (req,res) =>{
     const {car,email,asunto,mensaje,rent} = req.body
-    nodemailer.createTestAccount((err, account) =>{
+    nodemailer.createTestAccount(async(err, account) =>{
         const htmlEmail = `
         <p>Email enviado automaticamente desde Rent_A_Car</p>
          <h2>Datos de la reserva :</h2>
@@ -86,7 +86,7 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
 
     emailCtrl.sendEmailWorkConfirmed = async (req,res) =>{
         const {name,email} = req.body
-        nodemailer.createTestAccount((err, account) =>{
+        nodemailer.createTestAccount(async(err, account) =>{
             const htmlEmail = `
             <p>Email enviado automaticamente desde Rent_A_Car</p>
              <h2>Estimado ${name} tenemos el placer de informarle que su petición de trabajo como chofer de la empresa ha sido aceptada</h2>
@@ -124,7 +124,7 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
         }
     emailCtrl.sendEmailWorkCanceled = async (req,res) =>{
         const {name,email,exp} = req.body
-        nodemailer.createTestAccount((err, account) =>{
+        nodemailer.createTestAccount(async(err, account) =>{
             const htmlEmail = `
             <p>Email enviado automaticamente desde Rent_A_Car</p>
              <h2>Estimado ${name} lamentamos informarle que su petición de trabajo como chofer de la empresa ha sido rechazada</h2>
@@ -168,7 +168,7 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
             user.role == "comercial" && emailList.push(user.email)
         });
 
-        nodemailer.createTestAccount((err, account) =>{
+        nodemailer.createTestAccount(async(err, account) =>{
             const htmlEmail = `
             <p>Email enviado automaticamente desde Rent_A_Car</p>
              <h2>Se ha registrado una nueva petición de chofer en el sistema. Accese con su cuenta comercial y responda lo antes posible </h2>
