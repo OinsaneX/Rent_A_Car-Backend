@@ -78,7 +78,7 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
                res.json({err})
             }
             else{
-                res.json("send")
+                res.json("sendd")
             }
         })
     })
