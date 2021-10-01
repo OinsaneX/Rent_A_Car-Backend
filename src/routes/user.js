@@ -14,7 +14,7 @@ router.route("/login")
 .post(getUserByNameAndPass)
 
 router.route("/convertToDriver/:id")
-.post(convertToDriver)
+.put(convertToDriver)
 
 
 module.exports = router
