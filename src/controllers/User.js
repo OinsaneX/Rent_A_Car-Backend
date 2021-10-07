@@ -9,12 +9,16 @@ userCtrl.getUsers = async(req,res)=>{
 
 userCtrl.createUser = async(req,res)=>{
     const {name,username,email,identity,phone,password,nacionality,country,address,role,pasport} = req.body
-
+    const exist = await userModel.find({email})
+    if(exist.length > 0){
+        res.json({errEmail:true})
+    }
+    else{
     const newUser = new userModel({name,username,email,identity,phone,password,nacionality,country,address,role,pasport})
    await newUser.save()
    .then(response=>res.json({message:response}))
    .catch(err=>res.json({message:err}))
-
+    }
 }
 
 userCtrl.deleteUser = async(req,res)=>{
