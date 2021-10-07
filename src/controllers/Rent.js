@@ -15,11 +15,11 @@ rentCtrlr.deleteAll = async (req,res) =>{
 
 rentCtrlr.createRent = async (req,res) =>{
     const {idUser,pickUp,location,dropOff,pickHour,dropHour,driver_Id,driver_name} = req.body
+    console.log(driver_Id,driver_name)
     const days = (new Date(dropOff).getTime() - new Date(pickUp).getTime()) / (1000 * 60 * 60 * 24)
     const newRent = new rentModel({
         idUser,pickUp,dropOff,location,days,pickHour,dropHour,driver_Id,driver_name
     })
-
     await newRent.save()
     .then((response) => res.json(response))
     .catch((err) =>res.json({err}))
@@ -114,7 +114,9 @@ rentCtrlr.searchDriversAvailable = async (req,res) =>{
     drivers.forEach(driver => {
         var available = true
         rents.forEach(rent => {
+            console.log(rent.driver_Id,driver._id)
             if(rent.driver_Id==driver._id && !rent.cancelated && rent.active){
+                console.log("awa")
                 if(new Date(rent.pickUp).getTime()<=new Date(pickUp).getTime() && new Date(rent.dropOff).getTime()>=new Date(dropOff).getTime()){
                     available = false
                 }
@@ -132,6 +134,7 @@ rentCtrlr.searchDriversAvailable = async (req,res) =>{
             driversAvailable.push(driver)
         }
     })
+    console.log(driversAvailable)
     res.json(driversAvailable[0])
     
 
@@ -143,5 +146,12 @@ rentCtrlr.getRentofUser = async (req,res)=>{
     res.json(rent)
 }
 
+
+rentCtrlr.getRentsByDriver =async( req,res) =>{
+const {id} = req.params
+
+const rents = await rentModel.find({driver_Id:id,confirmed:true})
+res.json(rents)
+}
 
 module.exports = rentCtrlr

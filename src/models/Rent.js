@@ -51,7 +51,13 @@ const rentSchema = new Schema({
    user_name:{
     type:String,
   },
+  driver_Id:{
+    type:String,
 
+  },
+  driver_name:{
+    type:String,
+  }
 
   
 },{timestamp:true})

@@ -123,13 +123,11 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
         })
         }
     emailCtrl.sendEmailWorkCanceled = async (req,res) =>{
-        const {name,email,exp} = req.body
+        const {name,email,} = req.body
         await  nodemailer.createTestAccount(async(err, account) =>{
             const htmlEmail = `
             <p>Email enviado automaticamente desde Rent_A_Car</p>
              <h2>Estimado ${name} lamentamos informarle que su petición de trabajo como chofer de la empresa ha sido rechazada</h2>
-             <h3>Razón :</h3>
-             <p>${exp}</p>
            
             `;
             let transporter =await  nodemailer.createTransport({
