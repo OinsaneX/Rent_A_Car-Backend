@@ -1,5 +1,6 @@
 const rentModel = require('../models/Rent')
 const carModel = require('../models/Car')
+const userModel = require('../models/User')
 const rentCtrlr = {}
 
 rentCtrlr.getRents = async (req,res) =>{
@@ -102,6 +103,36 @@ rentCtrlr.searchCarsavailable = async (req,res) =>{
         }
     })
     res.json(listAvailable)
+    
+
+}
+rentCtrlr.searchDriversAvailable = async (req,res) =>{
+    const {pickUp,dropOff} = req.body
+    const drivers =await userModel.find({role:'driver'})
+    const rents =await rentModel.find()
+    const driversAvailable = []
+    drivers.forEach(driver => {
+        var available = true
+        rents.forEach(rent => {
+            if(rent.driver_Id==driver._id && !rent.cancelated && rent.active){
+                if(new Date(rent.pickUp).getTime()<=new Date(pickUp).getTime() && new Date(rent.dropOff).getTime()>=new Date(dropOff).getTime()){
+                    available = false
+                }
+                else if(new Date(pickUp).getTime()>=new Date(rent.pickUp).getTime()&&new Date(pickUp).getTime()<= new Date(rent.dropOff).getTime()) {
+                    available = false
+                } 
+                else if(new Date(dropOff).getTime()>=new Date(rent.pickUp).getTime()&&new Date(pickUp).getTime()<= new Date(rent.dropOff).getTime()) {
+                    available = false
+                } 
+            
+            }
+           
+        })
+        if(available){
+            driversAvailable.push(driver)
+        }
+    })
+    res.json(driversAvailable[0])
     
 
 }
