@@ -14,10 +14,10 @@ rentCtrlr.deleteAll = async (req,res) =>{
 }
 
 rentCtrlr.createRent = async (req,res) =>{
-    const {idUser,pickUp,location,dropOff,pickHour,dropHour} = req.body
+    const {idUser,pickUp,location,dropOff,pickHour,dropHour,driver_Id,driver_name} = req.body
     const days = (new Date(dropOff).getTime() - new Date(pickUp).getTime()) / (1000 * 60 * 60 * 24)
     const newRent = new rentModel({
-        idUser,pickUp,dropOff,location,days,pickHour,dropHour
+        idUser,pickUp,dropOff,location,days,pickHour,dropHour,driver_Id,driver_name
     })
 
     await newRent.save()
