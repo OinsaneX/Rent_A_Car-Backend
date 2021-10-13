@@ -13,7 +13,7 @@ await nodemailer.createTestAccount(async(err, account) =>{
         port:587,
         auth: {
             user: '0rentacar.cu@gmail.com',
-            pass: 'm!FQYWdCD6WYhg6'
+            pass: 'adalfa2000'
         }
     });
 
@@ -60,7 +60,7 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
             port:587,
             auth: {
                 user: '0rentacar.cu@gmail.com',
-                pass: 'm!FQYWdCD6WYhg6'
+                pass: 'adalfa2000'
             }
         });
     
@@ -99,7 +99,7 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
                 port:587,
                 auth: {
                     user: '0rentacar.cu@gmail.com',
-                    pass: 'm!FQYWdCD6WYhg6'
+                    pass: 'adalfa2000'
                 }
             });
         
@@ -135,7 +135,7 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
                 port:587,
                 auth: {
                     user: '0rentacar.cu@gmail.com',
-                    pass: 'm!FQYWdCD6WYhg6'
+                    pass: 'adalfa2000'
                 }
             });
         
@@ -179,7 +179,7 @@ emailCtrl.sendEmailConfirm = async (req,res) =>{
                 port:587,
                 auth: {
                     user: '0rentacar.cu@gmail.com',
-                    pass: 'm!FQYWdCD6WYhg6'
+                    pass: 'adalfa2000'
                 }
             });
         
