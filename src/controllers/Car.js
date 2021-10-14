@@ -10,12 +10,13 @@ res.json(carList)
 
 carController.addCar = async(req, res) =>{
 
-    const {brand,model, description,price_per_day,imageUrl,qualify,ports,air,type,transmission,capacity} = req.body
+    const {brand,model, description,price_per_day,registration,imageUrl,qualify,ports,air,type,transmission,capacity} = req.body
 
     const newCar = new carModel({
         brand,
         model,
         description,
+        registration,
         price_per_day,
         imageUrl,
         qualify,
@@ -54,9 +55,9 @@ carController.deleteCar = async(req, res) =>{
 
 carController.updateCar = async(req, res) =>{
     const id = req.params.id
-    const {brand, model, description,price_per_day,imageUrl,ports,air,type,transmission,capacity} = req.body
+    const {brand, model, description,price_per_day,imageUrl,ports,air,type,transmission,capacity,registration} = req.body
 
-    const newCar = new carModel({_id:id,brand, model, description, price_per_day, imageUrl,ports,air,type,transmission,capacity})
+    const newCar = new carModel({_id:id,brand, model, description, price_per_day,registration, imageUrl,ports,air,type,transmission,capacity})
     await carModel.findByIdAndUpdate(id,newCar)
 
     res.json({isOk:true})
