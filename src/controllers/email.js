@@ -7,6 +7,7 @@ await nodemailer.createTestAccount(async(err, account) =>{
     const htmlEmail = `
     <h2>Email enviado automaticamente desde Rent_A_Car</h2>
     <h3>Gracias ${req.body.username} por crearte  una cuenta en nuestro sitio ... Active las notificaciones en su cuenta para recibir notificaciones de ofertas</h3>
+    <a href="https://rent-a-car-zeta.vercel.app/profile/confirm/${req.body._id}">Para validar su cuenta haga click aqui</a>
     `;
     let transporter =await  nodemailer.createTransport({
         host: 'smtp.gmail.com',

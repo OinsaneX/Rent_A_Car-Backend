@@ -55,6 +55,10 @@ const userSchema = new Schema({
       licenseValidation:{
         type:String,
       },
+      confirmed:{
+          type:Boolean,
+          default:false
+      }
     })
 
 

@@ -24,7 +24,7 @@ userCtrl.createUser = async(req,res)=>{
     else{
     const newUser = new userModel({name,username,email,identity,phone,password,nacionality,country,address,role,pasport})
    await newUser.save()
-   .then(response=>res.json({message:response}))
+   .then(response=>res.json(response))
    .catch(err=>res.json({message:err}))
     }
 }
@@ -58,6 +58,12 @@ userCtrl.convertToDriver = async(req,res)=>{
     const {experience_years,license,licenseValidation} = req.body
    await userModel.findByIdAndUpdate(id,{role:'driver',experience_years,license,licenseValidation})
     res.json('changed to driver')
+}
+userCtrl.confirmAccount = async(req,res)=>{
+    const {id} = req.params
+
+   await userModel.findByIdAndUpdate(id,{confirmed:true})
+    res.json('confirmed')
 }
 
 
