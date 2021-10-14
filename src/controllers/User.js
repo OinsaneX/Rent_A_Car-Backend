@@ -56,14 +56,26 @@ userCtrl.convertToDriver = async(req,res)=>{
     const {id} = req.params
 
     const {experience_years,license,licenseValidation} = req.body
-   await userModel.findByIdAndUpdate(id,{role:'driver',experience_years,license,licenseValidation})
-    res.json('changed to driver')
+try {
+    await userModel.findByIdAndUpdate(id,{role:'driver',experience_years,license,licenseValidation})
+
+} catch (error) {
+    res.send("err")
+}  
+
 }
+
+
 userCtrl.confirmAccount = async(req,res)=>{
     const {id} = req.params
-
-   await userModel.findByIdAndUpdate(id,{confirmed:true})
-    res.json('confirmed')
+    
+try{
+    await userModel.findByIdAndUpdate(id,{confirmed:true})
+    res.send("updated")
+}catch(err){
+    res.send("error")
+} 
+   
 }
 
 
