@@ -29,10 +29,7 @@ const driverFormSchema = new Schema({
         type:String,
         required:true
     },
-    role:{
-        type:String,
-        default:"driver"
-    },
+  
       deleted:{
         type:Boolean,
         default:false
