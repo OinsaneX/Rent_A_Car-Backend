@@ -9,6 +9,10 @@ const carSchema = new Schema({
         type: String,
         required: true
     },
+    registration :{
+        type: String,
+        required: true
+    },
 
     price_per_day: {
         type: Number,
