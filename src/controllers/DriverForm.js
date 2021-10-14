@@ -3,7 +3,7 @@ const driverFormCtrl = {}
 
 driverFormCtrl.getDriverForms = async(req,res)=>{
     
-    const driverList = await driverModelForm.find({deleted:false})
+    const driverList = await driverModelForm.find()
     res.json(driverList)
 }
 
