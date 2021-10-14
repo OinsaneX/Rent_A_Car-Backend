@@ -9,9 +9,17 @@ userCtrl.getUsers = async(req,res)=>{
 
 userCtrl.createUser = async(req,res)=>{
     const {name,username,email,identity,phone,password,nacionality,country,address,role,pasport} = req.body
-    const exist = await userModel.find({email})
-    if(exist.length > 0){
+    const emailExist = await userModel.find({email})
+    const userExist = await userModel.find({username})
+    const identityExist = await userModel.find({identity})
+    if(emailExist.length > 0){
         res.json({errEmail:true})
+    }
+    else if(userExist.length > 0){
+        res.json({errUser:true})
+    }
+    else if(identityExist.length > 0){
+        res.json({errIdentity:true})
     }
     else{
     const newUser = new userModel({name,username,email,identity,phone,password,nacionality,country,address,role,pasport})
