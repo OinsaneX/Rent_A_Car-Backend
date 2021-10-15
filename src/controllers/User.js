@@ -13,7 +13,7 @@ userCtrl.createUser = async(req,res)=>{
     const userExist = await userModel.find({username})
     const identityExist = await userModel.find({identity})
     if(emailExist.length > 0){
-        res.json({errEmail:true})
+        res.json({errEmail:false})
     }
     else if(userExist.length > 0){
         res.json({errUser:true})
@@ -64,6 +64,7 @@ try {
 }  
 
 }
+
 
 
 userCtrl.confirmAccount = async(req,res)=>{
