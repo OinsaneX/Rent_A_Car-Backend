@@ -37,6 +37,47 @@ await nodemailer.createTestAccount(async(err, account) =>{
     })
 })
 }
+emailCtrl.sendSupportEmail = async (req,res) =>{
+    const {name,assunto,emailUser} = req.body
+
+    const admins = await userModel.find({role:'comercial'})
+    var listEmail = []
+    admins.forEach(user => {
+        listEmail.push(user.email)
+    });
+await nodemailer.createTestAccount(async(err, account) =>{
+    const htmlEmail = `
+    <h5>Nombre del usuario: ${name}</h5>
+   
+    `;
+    let transporter =await  nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port:587,
+        auth: {
+            user: '0rentacar.cu@gmail.com',
+            pass: 'adalfa2000'
+        }
+    });
+
+    let mailOptions = {
+        from: 'Rent_A_Car.Cuba',
+        to: listEmail,
+        replyTo: emailUser,
+        subject: "",
+        text: assunto,
+        html:htmlEmail
+    };
+
+   await transporter.sendMail(mailOptions,(err,info)=>{
+        if(err){
+           res.json({err})
+        }
+        else{
+            res.json("send")
+        }
+    })
+})
+}
 
 
 emailCtrl.sendEmailConfirm = async (req,res) =>{
