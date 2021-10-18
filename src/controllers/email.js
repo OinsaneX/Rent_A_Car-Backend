@@ -45,10 +45,12 @@ emailCtrl.sendSupportEmail = async (req,res) =>{
     admins.forEach(user => {
         listEmail.push(user.email)
     });
+    console.log(listEmail)
 await nodemailer.createTestAccount(async(err, account) =>{
     const htmlEmail = `
     <h5>Nombre del usuario: ${name}</h5>
    
+    <p>${assunto}</p>
     `;
     let transporter =await  nodemailer.createTransport({
         host: 'smtp.gmail.com',
@@ -63,7 +65,7 @@ await nodemailer.createTestAccount(async(err, account) =>{
         from: 'Rent_A_Car.Cuba',
         to: listEmail,
         replyTo: emailUser,
-        subject: "",
+        subject: "Mensaje de Soporte Rent_A_Car",
         text: assunto,
         html:htmlEmail
     };
