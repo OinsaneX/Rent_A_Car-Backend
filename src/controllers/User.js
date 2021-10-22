@@ -63,14 +63,7 @@ userCtrl.updateUser = async (req, res) => {
     role,
     pasport,
   } = req.body;
-  const userExist = await userModel.find({ username });
-  const identityExist = await userModel.find({ identity });
-
-  if (userExist.length > 0) {
-    res.json({ errUser: true });
-  } else if (identityExist.length > 0) {
-    res.json({ errIdentity: true });
-  } else {
+ 
     const newUser = new userModel({
       name,
       username,
