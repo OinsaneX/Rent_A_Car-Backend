@@ -63,25 +63,24 @@ userCtrl.updateUser = async (req, res) => {
     role,
     pasport,
   } = req.body;
- 
-    const newUser = new userModel({
-      name,
-      username,
-      email,
-      identity,
-      phone,
-      password,
-      nacionality,
-      country,
-      address,
-      role,
-      pasport,
-    });
-    await userModel
-      .findByIdAndUpdate(id, { ...newUser })
-      .then((response) => res.json(response))
-      .catch((err) => res.json({ message: err }));
-  }
+
+  const newUser = new userModel({
+    name,
+    username,
+    email,
+    identity,
+    phone,
+    password,
+    nacionality,
+    country,
+    address,
+    role,
+    pasport,
+  });
+  await userModel
+    .findByIdAndUpdate(id, { ...newUser })
+    .then((response) => res.json(response))
+    .catch((err) => res.json({ message: err }));
 };
 
 userCtrl.deleteUser = async (req, res) => {
