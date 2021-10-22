@@ -107,6 +107,7 @@ userCtrl.convertToDriver = async (req, res) => {
   const { id } = req.params;
 
   const { experience_years, license, licenseValidation } = req.body;
+  if (!experience_years) experience_years = 0;
   try {
     await userModel.findByIdAndUpdate(id, {
       role: "driver",
