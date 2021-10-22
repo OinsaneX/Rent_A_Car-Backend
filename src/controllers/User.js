@@ -64,21 +64,20 @@ userCtrl.updateUser = async (req, res) => {
     pasport,
   } = req.body;
 
-  const newUser = new userModel({
-    name,
-    username,
-    email,
-    identity,
-    phone,
-    password,
-    nacionality,
-    country,
-    address,
-    role,
-    pasport,
-  });
   await userModel
-    .findByIdAndUpdate(id, { ...newUser })
+    .findByIdAndUpdate(id, {
+      name,
+      username,
+      email,
+      identity,
+      phone,
+      password,
+      nacionality,
+      country,
+      address,
+      role,
+      pasport,
+    })
     .then((response) => res.json(response))
     .catch((err) => res.json({ message: err }));
 };
