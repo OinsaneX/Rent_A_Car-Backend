@@ -27,7 +27,7 @@ userCtrl.createUser = async (req, res) => {
 
   if (userExist.length > 0) {
     res.json({ errUser: true });
-  } else if (identityExist.length > 0) {
+  } else if (identityExist.length > 0 && nacionality == "Cuba") {
     res.json({ errIdentity: true });
   } else {
     const newUser = new userModel({
