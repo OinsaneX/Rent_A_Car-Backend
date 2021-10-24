@@ -16,6 +16,7 @@ userCtrl.createUser = async (req, res) => {
     phone,
     password,
     nacionality,
+    confirmed,
     country,
     address,
     role,
@@ -40,6 +41,7 @@ userCtrl.createUser = async (req, res) => {
       country,
       address,
       role,
+      confirmed,
       pasport,
     });
     await newUser
