@@ -117,6 +117,7 @@ userCtrl.convertToDriver = async (req, res) => {
       license,
       licenseValidation,
     });
+    res.json("changed");
   } catch (error) {
     res.send("err");
   }
